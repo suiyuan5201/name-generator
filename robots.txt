@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://name-sign-generator.netlify.app/sitemap.xml
+Sitemap: https://tiny-youtiao-98585a.netlify.app/sitemap.xml
