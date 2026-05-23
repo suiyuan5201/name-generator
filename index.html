@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>网名签名生成器 - 个性网名/艺术签名/头像在线生成 | 免费工具</title>
+<meta name="description" content="免费在线网名生成器、艺术签名设计、个性头像制作，支持古风网名、情侣网名、英文网名、花体签名、手写签名等，一键生成复制使用。">
+<meta name="keywords" content="网名生成器,个性网名,艺术签名,签名设计,情侣网名,古风网名,英文网名,花体签名,个性头像,网名大全">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2030154790924322" crossorigin="anonymous"></script>
+<style>
+:root{--primary:#6366f1;--primary-dark:#4f46e5;--bg:#f8fafc;--text:#1e293b;--text-light:#64748b;--border:#e2e8f0;--card-bg:#fff;--shadow:0 2px 12px rgba(0,0,0,.06)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+a{text-decoration:none;color:inherit}
+.navbar{background:var(--card-bg);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:15px;position:sticky;top:0;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.logo{font-weight:700;font-size:1.2em;color:var(--primary)}
+.nav-links{display:flex;gap:15px;margin-left:auto}
+.nav-links a{font-size:13px;color:var(--text-light);transition:color .2s;cursor:pointer}
+.nav-links a:hover,.nav-links a.active{color:var(--primary)}
+.hero{text-align:center;padding:50px 20px 35px;background:linear-gradient(135deg,#f093fb 0%,#f5576c 50%,#4facfe 100%);color:#fff;margin-bottom:30px}
+.hero h1{font-size:2.2em;margin-bottom:10px}
+.hero p{font-size:15px;opacity:.9;max-width:550px;margin:0 auto}
+.container{max-width:900px;margin:0 auto;padding:0 20px 50px}
+
+/* 标签导航 */
+.tab-nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:25px}
+.tab-btn{padding:10px 22px;border-radius:25px;border:1px solid var(--border);font-size:14px;cursor:pointer;transition:all .2s;background:var(--card-bg);font-weight:500}
+.tab-btn:hover,.tab-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+
+/* 内容区 */
+.tab-content{display:none}
+.tab-content.active{display:block}
+.card{background:var(--card-bg);border-radius:14px;padding:25px;box-shadow:var(--shadow);border:1px solid var(--border);margin-bottom:20px}
+.card h2{font-size:1.1em;margin-bottom:15px;display:flex;align-items:center;gap:8px}
+
+/* 网名生成器 */
+.name-options{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.name-opt{padding:6px 14px;border:1px solid var(--border);border-radius:20px;font-size:13px;cursor:pointer;transition:all .2s}
+.name-opt:hover,.name-opt.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.name-results{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:15px}
+.name-item{background:#f9fafb;border:1px solid var(--border);border-radius:10px;padding:12px 15px;font-size:14px;cursor:pointer;transition:all .2s;display:flex;justify-content:space-between;align-items:center}
+.name-item:hover{background:#f0f4ff;border-color:var(--primary)}
+.name-item .copy-icon{font-size:12px;color:var(--text-light);opacity:0;transition:opacity .2s}
+.name-item:hover .copy-icon{opacity:1}
+.gen-btn{padding:12px 30px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:15px;cursor:pointer;font-weight:600;transition:background .2s;display:block;margin:0 auto}
+.gen-btn:hover{background:var(--primary-dark)}
+
+/* 签名生成器 */
+.sign-input{width:100%;padding:14px 18px;border:2px solid var(--border);border-radius:12px;font-size:16px;outline:none;transition:border-color .2s;margin-bottom:15px}
+.sign-input:focus{border-color:var(--primary)}
+.sign-styles{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.sign-style{padding:6px 14px;border:1px solid var(--border);border-radius:20px;font-size:13px;cursor:pointer;transition:all .2s}
+.sign-style:hover,.sign-style.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.sign-results{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-top:15px}
+.sign-item{background:#f9fafb;border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center;cursor:pointer;transition:all .2s}
+.sign-item:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.sign-item .sign-text{font-size:24px;margin-bottom:8px;min-height:50px;display:flex;align-items:center;justify-content:center}
+.sign-item .sign-label{font-size:11px;color:var(--text-light)}
+
+/* 头像生成器 */
+.avatar-options{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.avatar-opt{padding:6px 14px;border:1px solid var(--border);border-radius:20px;font-size:13px;cursor:pointer;transition:all .2s}
+.avatar-opt:hover,.avatar-opt.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.avatar-results{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:12px;margin-top:15px}
+.avatar-item{aspect-ratio:1;border-radius:50%;overflow:hidden;cursor:pointer;transition:transform .2s;box-shadow:0 2px 8px rgba(0,0,0,.1);border:3px solid #fff}
+.avatar-item:hover{transform:scale(1.1)}
+.avatar-item canvas{width:100%;height:100%}
+
+/* Toast */
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#1e293b;color:#fff;padding:10px 24px;border-radius:20px;font-size:14px;z-index:9999;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.show{opacity:1}
+
+.ad-placeholder{background:#f9fafb;border:2px dashed var(--border);border-radius:12px;padding:20px;text-align:center;color:var(--text-light);font-size:13px;margin:25px auto;max-width:728px}
+.footer{text-align:center;padding:30px;color:var(--text-light);font-size:13px;border-top:1px solid var(--border);margin-top:40px}
+@media(max-width:768px){.hero h1{font-size:1.6em}.name-results{grid-template-columns:1fr 1fr}.sign-results{grid-template-columns:1fr}.avatar-results{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <a href="index.html" class="logo">✨ 网名签名生成器</a>
+  <div class="nav-links">
+    <a onclick="switchTab('names')" class="active" id="navNames">网名生成</a>
+    <a onclick="switchTab('signs')" id="navSigns">签名设计</a>
+    <a onclick="switchTab('avatars')" id="navAvatars">头像生成</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>✨ 网名 · 签名 · 头像</h1>
+  <p>一键生成个性网名、艺术签名、创意头像，免费使用，点击即可复制</p>
+</div>
+
+<div class="container">
+  <!-- 标签切换 -->
+  <div class="tab-nav">
+    <span class="tab-btn active" onclick="switchTab('names')">🏷️ 网名生成</span>
+    <span class="tab-btn" onclick="switchTab('signs')">✒️ 签名设计</span>
+    <span class="tab-btn" onclick="switchTab('avatars')">👤 头像生成</span>
+  </div>
+
+  <!-- ===== 网名生成 ===== -->
+  <div class="tab-content active" id="tab-names">
+    <div class="card">
+      <h2>🏷️ 选择网名风格</h2>
+      <div class="name-options" id="nameStyles">
+        <span class="name-opt active" data-style="ancient">古风</span>
+        <span class="name-opt" data-style="cute">可爱</span>
+        <span class="name-opt" data-style="cool">霸气</span>
+        <span class="name-opt" data-style="sad">伤感</span>
+        <span class="name-opt" data-style="couple">情侣</span>
+        <span class="name-opt" data-style="english">英文</span>
+        <span class="name-opt" data-style="japanese">日系</span>
+        <span class="name-opt" data-style="funny">搞笑</span>
+        <span class="name-opt" data-style="game">游戏</span>
+        <span class="name-opt" data-style="simple">简约</span>
+      </div>
+      <button class="gen-btn" onclick="generateNames()">🎲 生成网名</button>
+      <div class="name-results" id="nameResults"></div>
+    </div>
+  </div>
+
+  <div class="ad-placeholder">广告位 - Google AdSense</div>
+
+  <!-- ===== 签名设计 ===== -->
+  <div class="tab-content" id="tab-signs">
+    <div class="card">
+      <h2>✒️ 输入你的名字</h2>
+      <input type="text" class="sign-input" id="signInput" placeholder="输入姓名（2-4个字效果最佳）" maxlength="8">
+      <div class="sign-styles" id="signStyles">
+        <span class="sign-style active" data-style="art">艺术签</span>
+        <span class="sign-style" data-style="flower">花体签</span>
+        <span class="sign-style" data-style="hand">手写签</span>
+        <span class="sign-style" data-style="business">商务签</span>
+        <span class="sign-style" data-style="cute">可爱签</span>
+        <span class="sign-style" data-style="seal">印章签</span>
+      </div>
+      <button class="gen-btn" onclick="generateSigns()">✨ 生成签名</button>
+      <div class="sign-results" id="signResults"></div>
+    </div>
+  </div>
+
+  <!-- ===== 头像生成 ===== -->
+  <div class="tab-content" id="tab-avatars">
+    <div class="card">
+      <h2>👤 选择头像风格</h2>
+      <div class="avatar-options" id="avatarStyles">
+        <span class="avatar-opt active" data-style="gradient">渐变</span>
+        <span class="avatar-opt" data-style="pixel">像素</span>
+        <span class="avatar-opt" data-style="abstract">抽象</span>
+        <span class="avatar-opt" data-style="geometric">几何</span>
+        <span class="avatar-opt" data-style="emoji">表情</span>
+        <span class="avatar-opt" data-style="text">文字</span>
+      </div>
+      <button class="gen-btn" onclick="generateAvatars()">🎨 生成头像</button>
+      <div class="avatar-results" id="avatarResults"></div>
+      <p style="text-align:center;font-size:12px;color:var(--text-light);margin-top:12px">💡 点击头像即可保存下载</p>
+    </div>
+  </div>
+
+  <div class="ad-placeholder">广告位 - Google AdSense</div>
+</div>
+
+<footer class="footer">
+  网名签名生成器 © 2024 | 免费在线个性化工具<br>
+  <span style="font-size:11px;margin-top:5px;display:block;opacity:.7">生成内容仅供参考和个人使用</span>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ====== 网名数据库 ======
+const NAME_DB = {
+  ancient: [
+    '清风徐来','月落星沉','浮生若梦','烟雨江南','醉卧红尘','花落知多少','一曲离殇',
+    '青衫烟雨','长安故里','墨染锦年','素衣清颜','风月不等闲','旧梦如烟','倾城如画',
+    '竹影清风','落花有意','浅笑安然','红尘过客','梦回长安','流年似水','断桥残雪',
+    '诗酒趁年华','一世倾城','青灯古寺','烟波钓叟','醉里挑灯','折月煮酒','水墨丹青',
+    '南风知我意','春风十里','暮色四合','寒烟翠','踏雪寻梅','一叶知秋','云深不知处',
+    '长亭古道','孤舟蓑笠','明月几时有','人间烟火','旧时光','故人西辞','山有木兮',
+    '临风听暮蝉','执笔写流年','相思入骨','一纸荒唐','半生浮名','白衣胜雪','且听风吟'
+  ],
+  cute: [
+    '奶味小仙女','甜甜的棉花糖','软萌兔叽','捧星星的小熊','草莓味的风','蘑菇头小可爱',
+    '奶茶续命中','小确幸✿','甜筒冰淇淋','月亮邮递员','星星收集者','糖果色天空',
+    '养乐多味的梦','泡泡糖公主','软绵绵的云朵','樱桃小丸子','爱吃糖的猫','兔兔那么可爱',
+    '奶酪芝士片','棉花糖的天空','吃可爱长大的','甜味少女心','小熊软糖','蜜桃乌龙茶',
+    '草莓酱','猫系少女','奶盖波波茶','小鹿乱撞','仙女下凡中','软糯酥心','布丁味的猫',
+    '彩虹糖的梦','椰奶冻冻','甜心小饼干','泡芙味少女','棒棒糖女孩','蓝莓芝士','奶油小生'
+  ],
+  cool: [
+    '孤傲一世','王者归来','霸气侧漏','独霸天下','不败战神','血染江山','傲视群雄',
+    '一统天下','龙行天下','剑指苍穹','九天揽月','万夫莫敌','横扫千军','一剑封喉',
+    '不可一世','王霸之气','睥睨天下','唯我独尊','浴血奋战','杀伐决断','问鼎中原',
+    '叱咤风云','绝世枭雄','狂战天下','弑神者','噬魂','凌云壮志','傲骨铮铮',
+    '霸绝天下','逆天而行','一人之下','碾压一切','不服来战','嗜血狂魔','战无不胜'
+  ],
+  sad: [
+    '故事的最后','独饮一壶愁','旧人不覆','余生太长','孤独患者','南风过境','繁华落尽',
+    '曲终人散','一个人的独白','深巷的猫','薄凉少年','旧梦难温','空城旧梦','独角戏',
+    '孤灯伴影','泪染倾城','浮生未歇','此生不换','走失的猫','余温散尽','落幕的孤单',
+    '心如止水','黄昏独坐','无人问津','故人已散','凉城无爱','一别经年','渐行渐远',
+    '后来的我们','风中残烛','昨日重现','岁月蹉跎','旧城已无少年','孤影残灯','浮世绘'
+  ],
+  couple: [
+    '南风知我意|北秋悉你心','向日葵的承诺|薰衣草的等待','左手倒影|右手年华',
+    '温柔以待|深情不负','南笙|北爱','暖于情|止于心','东风寄|西风归',
+    '与你|共余生','清风|明月','星辰|大海','春风|秋水','日出|月落',
+    '甜了夏天|暖了冬天','你的笑|我的药','左岸|右岸','山有木兮|木有枝',
+    '风起|云涌','执子之手|与子偕老','予你|心安','从前|以后','晨曦|暮光'
+  ],
+  english: [
+    'Ethereal','Serenity','Luminous','Celestial','Whisper','Aurora','Infinity',
+    'Starfall','Moonlit','Velvet','Cascade','Nebula','Phoenix','Eclipse',
+    'Crystal','Sapphire','Mystic','Wanderer','Dreamer','Odyssey','Solace',
+    'Radiance','Twilight','Harmony','Zephyr','Mirage','Euphoria','Blossom',
+    'Ember','Reverie','Silhouette','Enigma','Paradox','Lullaby','Cosmos'
+  ],
+  japanese: [
+    '桜の涙','夏目友人','月が綺麗','風の旅人','雪見酒','花見日和','春風駘蕩',
+    '星屑の夜','雨音','朝露','夕焼け','物語','花火大会','青い空','白い雲',
+    '秋風','冬の花','光と影','永遠に','桃色の夢','紫陽花','向日葵','蝶々',
+    '流れ星','海の声','森の中','時の砂','虹色','銀河','千鶴','風鈴','桔梗'
+  ],
+  funny: [
+    '单身三十年','脑子进水了','五行缺钱','专业摸鱼','佛系躺平','社恐患者',
+    '减肥从明天开始','WiFi是我的命','吃货一枚','资深熬夜选手','职业路人甲',
+    '咸鱼翻了个身','学费白交了','我太难了','快乐肥宅','摸鱼大师','带薪拉屎',
+    '脱发少女','人间清醒','一级退堂鼓选手','摆烂大师','干饭第一名','社牛本牛',
+    '柠檬精附体','自闭中勿cue','拖延症晚期','上班如上坟','宇宙第一懒','梦想是不上班',
+    '啊这','绝绝子','完蛋我被包围了','打工人打工魂','满脑子摆烂','退退退'
+  ],
+  game: [
+    '影杀神','无敌暴龙战士','绝地求生者','超神之路','永恒之巅','暗夜猎手',
+    '风暴领主','冰霜射手','烈焰战神','雷霆万钧','幻影刺客','苍穹之主',
+    '不败剑圣','血色玫瑰','暗黑破坏神','星辰守护','龙魂觉醒','无双战将',
+    '天命之人','至尊杀手','凤凰涅槃','绝世战魂','荒野猎人','极限操作',
+    '一刀999','满级大佬','氪金战士','平民之光','野区霸主','团战鬼才'
+  ],
+  simple: [
+    '也好','晚风','岛屿','鹿港','橘子','余光','路口','信号','轨迹','温度',
+    '纯白','简单','安好','自在','清欢','半夏','初见','念旧','独白','远方',
+    '微风','淡然','随心','浅笑','素年','静好','从容','知足','且慢','还好',
+    '如常','平淡','自然','留白','余味','回响','光影','碎片','年轮','印记'
+  ]
+};
+
+let currentNameStyle = 'ancient';
+let currentSignStyle = 'art';
+let currentAvatarStyle = 'gradient';
+
+// ====== Tab切换 ======
+function switchTab(tab) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  // 更新tab按钮和导航
+  const idx = {names:0, signs:1, avatars:2}[tab];
+  document.querySelectorAll('.tab-btn')[idx].classList.add('active');
+  document.querySelectorAll('.nav-links a')[idx].classList.add('active');
+}
+
+// ====== 网名生成 ======
+document.querySelectorAll('.name-opt').forEach(el => {
+  el.addEventListener('click', function() {
+    document.querySelectorAll('.name-opt').forEach(e => e.classList.remove('active'));
+    this.classList.add('active');
+    currentNameStyle = this.dataset.style;
+  });
+});
+
+function generateNames() {
+  const pool = NAME_DB[currentNameStyle] || NAME_DB.ancient;
+  const results = [];
+  const shuffled = [...pool].sort(() => Math.random() - 0.5);
+  const count = Math.min(12, shuffled.length);
+  for (let i = 0; i < count; i++) results.push(shuffled[i]);
+
+  const container = document.getElementById('nameResults');
+  container.innerHTML = results.map(name => `
+    <div class="name-item" onclick="copyText('${name.replace(/'/g,"\\'")}')">
+      <span>${name}</span>
+      <span class="copy-icon">📋复制</span>
+    </div>
+  `).join('');
+}
+
+// ====== 签名生成 ======
+document.querySelectorAll('.sign-style').forEach(el => {
+  el.addEventListener('click', function() {
+    document.querySelectorAll('.sign-style').forEach(e => e.classList.remove('active'));
+    this.classList.add('active');
+    currentSignStyle = this.dataset.style;
+  });
+});
+
+const SIGN_FONTS = {
+  art: ['cursive', 'fantasy', 'serif'],
+  flower: ['cursive', 'fantasy'],
+  hand: ['cursive', 'serif'],
+  business: ['serif', 'sans-serif'],
+  cute: ['cursive', 'fantasy'],
+  seal: ['serif', 'monospace']
+};
+
+const SIGN_TRANSFORMS = {
+  art: (text) => text.split('').map((c,i) => {
+    const decorators = ['꧁','꧂','ꕥ','᭄','ꦿ','᭄ꦿ','⁺⑅','♡'];
+    return i===0 ? '꧁'+c : i===text.length-1 ? c+'꧂' : c;
+  }).join(''),
+  flower: (text) => '𝓐𝓑𝓒𝓓𝓔𝓕𝓖𝓗𝓘𝓙𝓚𝓛𝓜𝓝𝓞𝓟𝓠𝓡𝓢𝓣𝓤𝓥𝓦𝓧𝓨𝓩'.length ? `✿${text}✿` : text,
+  hand: (text) => `〖${text}〗`,
+  business: (text) => `【${text}】`,
+  cute: (text) => `♡${text}♡`,
+  seal: (text) => `〔${text}〕`
+};
+
+function generateSigns() {
+  const name = document.getElementById('signInput').value.trim();
+  if (!name) { showToast('请先输入姓名'); return; }
+
+  const container = document.getElementById('signResults');
+  const styles = [
+    {label:'艺术签名', font:'italic 28px cursive', transform: t => `꧁${t}꧂`},
+    {label:'花体签名', font:'italic 26px fantasy', transform: t => `✿ ${t} ✿`},
+    {label:'商务签名', font:'bold 24px serif', transform: t => `【${t}】`},
+    {label:'手写签名', font:'italic 26px "Segoe Script",cursive', transform: t => t},
+    {label:'可爱签名', font:'24px cursive', transform: t => `♡ ${t} ♡`},
+    {label:'印章风格', font:'bold 22px "SimSun",serif', transform: t => `〔${t}〕`},
+    {label:'潇洒签名', font:'italic bold 28px cursive', transform: t => `〜${t}〜`},
+    {label:'简约签名', font:'300 26px "Helvetica Neue",sans-serif', transform: t => `— ${t} —`},
+  ];
+
+  container.innerHTML = styles.map(s => `
+    <div class="sign-item" onclick="copyText('${s.transform(name).replace(/'/g,"\\'")}')">
+      <div class="sign-text" style="font:${s.font}">${s.transform(name)}</div>
+      <div class="sign-label">${s.label} · 点击复制</div>
+    </div>
+  `).join('');
+}
+
+// ====== 头像生成 ======
+document.querySelectorAll('.avatar-opt').forEach(el => {
+  el.addEventListener('click', function() {
+    document.querySelectorAll('.avatar-opt').forEach(e => e.classList.remove('active'));
+    this.classList.add('active');
+    currentAvatarStyle = this.dataset.style;
+  });
+});
+
+function generateAvatars() {
+  const container = document.getElementById('avatarResults');
+  container.innerHTML = '';
+  for (let i = 0; i < 12; i++) {
+    const div = document.createElement('div');
+    div.className = 'avatar-item';
+    const canvas = document.createElement('canvas');
+    canvas.width = 200; canvas.height = 200;
+    drawAvatar(canvas, currentAvatarStyle, i);
+    div.appendChild(canvas);
+    div.onclick = () => downloadAvatar(canvas, i);
+    container.appendChild(div);
+  }
+}
+
+function drawAvatar(canvas, style, seed) {
+  const ctx = canvas.getContext('2d');
+  const w = canvas.width, h = canvas.height;
+  const rand = seedRandom(seed + Date.now() % 10000);
+
+  switch(style) {
+    case 'gradient':
+      const colors = [
+        ['#667eea','#764ba2'],['#f093fb','#f5576c'],['#4facfe','#00f2fe'],
+        ['#43e97b','#38f9d7'],['#fa709a','#fee140'],['#a18cd1','#fbc2eb'],
+        ['#ffecd2','#fcb69f'],['#89f7fe','#66a6ff'],['#fddb92','#d1fdff'],
+        ['#c1dfc4','#deecdd'],['#ff9a9e','#fecfef'],['#fbc2eb','#a6c1ee']
+      ];
+      const [c1, c2] = colors[Math.floor(rand() * colors.length)];
+      const angle = rand() * Math.PI * 2;
+      const grad = ctx.createLinearGradient(
+        w/2 + Math.cos(angle)*w/2, h/2 + Math.sin(angle)*h/2,
+        w/2 - Math.cos(angle)*w/2, h/2 - Math.sin(angle)*h/2
+      );
+      grad.addColorStop(0, c1); grad.addColorStop(1, c2);
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, w, h);
+      // 添加装饰
+      ctx.globalAlpha = 0.3;
+      for (let j = 0; j < 5; j++) {
+        ctx.beginPath();
+        ctx.arc(rand()*w, rand()*h, rand()*50+20, 0, Math.PI*2);
+        ctx.fillStyle = '#fff';
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+      break;
+
+    case 'pixel':
+      const blockSize = 25;
+      const palette = ['#264653','#2a9d8f','#e9c46a','#f4a261','#e76f51','#606c38','#dda15e'];
+      for (let x = 0; x < w; x += blockSize) {
+        for (let y = 0; y < h; y += blockSize) {
+          ctx.fillStyle = palette[Math.floor(rand() * palette.length)];
+          ctx.fillRect(x, y, blockSize, blockSize);
+        }
+      }
+      break;
+
+    case 'abstract':
+      ctx.fillStyle = `hsl(${rand()*360},70%,95%)`;
+      ctx.fillRect(0, 0, w, h);
+      for (let j = 0; j < 8; j++) {
+        ctx.beginPath();
+        ctx.moveTo(rand()*w, rand()*h);
+        ctx.bezierCurveTo(rand()*w,rand()*h,rand()*w,rand()*h,rand()*w,rand()*h);
+        ctx.strokeStyle = `hsla(${rand()*360},80%,50%,0.6)`;
+        ctx.lineWidth = rand()*8+2;
+        ctx.stroke();
+      }
+      break;
+
+    case 'geometric':
+      ctx.fillStyle = `hsl(${rand()*360},30%,95%)`;
+      ctx.fillRect(0, 0, w, h);
+      const shapes = Math.floor(rand()*5)+4;
+      for (let j = 0; j < shapes; j++) {
+        ctx.save();
+        ctx.translate(rand()*w, rand()*h);
+        ctx.rotate(rand()*Math.PI*2);
+        ctx.fillStyle = `hsla(${rand()*360},70%,60%,0.7)`;
+        const sides = Math.floor(rand()*4)+3;
+        const size = rand()*40+20;
+        ctx.beginPath();
+        for (let s = 0; s < sides; s++) {
+          const a = (s/sides)*Math.PI*2;
+          ctx.lineTo(Math.cos(a)*size, Math.sin(a)*size);
+        }
+        ctx.closePath(); ctx.fill();
+        ctx.restore();
+      }
+      break;
+
+    case 'emoji':
+      const bgHue = rand()*360;
+      ctx.fillStyle = `hsl(${bgHue},60%,85%)`;
+      ctx.fillRect(0, 0, w, h);
+      const emojis = ['😀','😎','🥰','😈','🤖','👻','🦊','🐼','🌈','⭐','🔥','💎','🎵','🍀','🌸'];
+      ctx.font = '80px serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(emojis[Math.floor(rand()*emojis.length)], w/2, h/2);
+      break;
+
+    case 'text':
+      const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      const letter = letters[Math.floor(rand()*26)];
+      const hue = rand()*360;
+      const tgrad = ctx.createLinearGradient(0,0,w,h);
+      tgrad.addColorStop(0, `hsl(${hue},70%,50%)`);
+      tgrad.addColorStop(1, `hsl(${(hue+60)%360},70%,50%)`);
+      ctx.fillStyle = tgrad;
+      ctx.fillRect(0, 0, w, h);
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 120px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(letter, w/2, h/2);
+      break;
+  }
+}
+
+function seedRandom(seed) {
+  let s = seed;
+  return function() {
+    s = (s * 16807 + 0) % 2147483647;
+    return s / 2147483647;
+  };
+}
+
+function downloadAvatar(canvas, index) {
+  const link = document.createElement('a');
+  link.download = `头像_${currentAvatarStyle}_${index+1}.png`;
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+  showToast('头像已保存！');
+}
+
+// ====== 通用工具 ======
+function copyText(text) {
+  navigator.clipboard.writeText(text).then(() => showToast('已复制：' + text));
+}
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2000);
+}
+
+// 初始化生成
+generateNames();
+generateAvatars();
+</script>
+</body>
+</html>
